@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteFilterContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.views.NodeFilterFragment">
+    <!--  Filter Section  -->
+    <LinearLayout
+        android:id="@+id/filterSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--  Title Filter  -->
+        <EditText
+            android:id="@+id/titleFilterEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Filter by title"
+            android:inputType="textCapWords"
+            android:minHeight="48dp" />
+        <!--  Content Filter  -->
+        <EditText
+            android:id="@+id/contentFilterEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Filter by content"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp" />
+        <!--  Completed Filter  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/completedFilterCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Completed" />
+            <!--  Fills space between CheckBox and Spinner  -->
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <!--  Priority Filter  -->
+            <Spinner
+                android:id="@+id/priorityFilterSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/priorities"
+                android:minHeight="48dp" />
+        </LinearLayout>
+        <!--  Filter / Sort Buttons  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/applyFilterBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Apply Filter"
+                android:textColor="?android:textColorPrimary" />
+
+            <TextView
+                android:id="@+id/sortByDateBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Sort by Date"
+                android:textColor="?android:textColorPrimary" />
+
+            <TextView
+                android:id="@+id/sortByPriorityBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Sort by Priority"
+                android:textColor="?android:textColorPrimary" />
+        </LinearLayout>
+        <!--  Divider  -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="#4A0CB8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filterSection" />
+    </LinearLayout>
+    <!--  RecyclerView for filtered results  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filteredNotesRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterSection"
+        tools:listitem="@layout/item_note" />
+</androidx.constraintlayout.widget.ConstraintLayout>
