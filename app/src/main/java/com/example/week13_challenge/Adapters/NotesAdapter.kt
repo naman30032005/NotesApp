@@ -53,7 +53,7 @@ class NotesAdapter(
 
 
         private fun formatTimestamp(timestamp:Long):String{
-            val date = SimpleDateFormat("dd-MM-yyyy HH:MM", Locale.getDefault())
+            val date = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
             return date.format(Date(timestamp))
         }
     }
